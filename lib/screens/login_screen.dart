@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,18 +12,33 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailCtrl = TextEditingController();
   final TextEditingController passCtrl = TextEditingController();
 
-  void _login() {
+  void _login() async {
     final email = emailCtrl.text.trim();
     final pass = passCtrl.text.trim();
 
     if (email.isEmpty || pass.isEmpty) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Debes ingresar correo y contraseña')),
       );
       return;
     }
 
-     Navigator.pushReplacementNamed(context, '/home');
+    try {
+      // Intentamos loguear con Firebase
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: pass,
+      );
+
+      if (!mounted) return;
+      Navigator.pushReplacementNamed(context, '/home');
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Correo o contraseña incorrectos')),
+      );
+    }
   }
 
   @override
@@ -49,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextButton(
               onPressed: () {
+                if (!mounted) return;
                 Navigator.pushNamed(context, '/register');
               },
               child: const Text('¿No tienes cuenta? Regístrate'),

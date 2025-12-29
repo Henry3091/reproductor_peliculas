@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "986048658290",
+    "firebase_url": "https://evaluacion-b54c1-default-rtdb.firebaseio.com",
+    "project_id": "evaluacion-b54c1",
+    "storage_bucket": "evaluacion-b54c1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986048658290:android:6eccf79dde5d69a64bbbeb",
+        "android_client_info": {
+          "package_name": "com.example.application_peliculas_taller"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS5Qfjn4RQ6E-J4c2mkhtwW0k_5WnCzV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986048658290:android:da3c525baa0f5d134bbbeb",
+        "android_client_info": {
+          "package_name": "com.tuempresa.evaluacion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS5Qfjn4RQ6E-J4c2mkhtwW0k_5WnCzV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

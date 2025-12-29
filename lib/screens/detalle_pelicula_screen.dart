@@ -10,7 +10,7 @@ class DetallePeliculaScreen extends StatelessWidget {
     final String titulo = pelicula['titulo'] ?? 'Sin título';
     final String descripcion = pelicula['descripcion'] ?? 'Sin descripción';
     final String imagen = pelicula['enlaces']?['image'] ?? '';
-    final String trailerUrl = pelicula['enlaces']?['trailer'] ?? '';
+    final String videoUrl = pelicula['enlaces']?['video'] ?? '';
 
     return Scaffold(
       appBar: AppBar(title: Text(titulo)),
@@ -19,7 +19,11 @@ class DetallePeliculaScreen extends StatelessWidget {
         child: Column(
           children: [
             if (imagen.isNotEmpty)
-              Image.network(imagen),
+              Image.network(
+                imagen,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.broken_image, size: 100),
+              ),
             const SizedBox(height: 10),
             Text(
               descripcion,
@@ -29,13 +33,13 @@ class DetallePeliculaScreen extends StatelessWidget {
             ElevatedButton.icon(
               icon: const Icon(Icons.play_arrow),
               label: const Text("Ver Trailer"),
-              onPressed: trailerUrl.isNotEmpty
+              onPressed: videoUrl.isNotEmpty
                   ? () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (_) =>
-                              ReproductorScreen(urlVideo: trailerUrl),
+                              ReproductorScreen(urlVideo: videoUrl),
                         ),
                       );
                     }

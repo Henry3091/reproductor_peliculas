@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -11,22 +12,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController emailCtrl = TextEditingController();
   final TextEditingController passCtrl = TextEditingController();
 
-  void _register() {
+  void _register() async {
     final email = emailCtrl.text.trim();
     final pass = passCtrl.text.trim();
 
     if (email.isEmpty || pass.isEmpty) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Debes completar todos los campos')),
       );
       return;
     }
 
-   
-    Navigator.pushReplacementNamed(context, '/login', arguments: {
-      'email': email,
-      'password': pass,
-    });
+    try {
+      // Creamos el usuario en Firebase
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: pass,
+      );
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Usuario registrado correctamente')),
+      );
+
+      if (!mounted) return;
+      Navigator.pushReplacementNamed(context, '/');
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Error al registrar usuario')),
+      );
+    }
   }
 
   @override
