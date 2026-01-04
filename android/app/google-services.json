@@ -8,28 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:986048658290:android:6eccf79dde5d69a64bbbeb",
+        "mobilesdk_app_id": "1:986048658290:android:a30fc48f4fcf13fb4bbbeb",
         "android_client_info": {
-          "package_name": "com.example.application_peliculas_taller"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDS5Qfjn4RQ6E-J4c2mkhtwW0k_5WnCzV8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:986048658290:android:da3c525baa0f5d134bbbeb",
-        "android_client_info": {
-          "package_name": "com.tuempresa.evaluacion"
+          "package_name": "com.henry.reproductor_peliculas_taller"
         }
       },
       "oauth_client": [],
