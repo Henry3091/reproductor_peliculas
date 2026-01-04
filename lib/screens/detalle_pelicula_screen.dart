@@ -10,7 +10,7 @@ class DetallePeliculaScreen extends StatelessWidget {
     final String titulo = pelicula['titulo'] ?? 'Sin título';
     final String descripcion = pelicula['descripcion'] ?? 'Sin descripción';
     final String imagen = pelicula['enlaces']?['image'] ?? '';
-    final String videoUrl = pelicula['enlaces']?['video'] ?? '';
+    final String videoUrl = pelicula['enlaces']?['trailer'] ?? ''; // ✅ CORREGIDO
 
     return Scaffold(
       appBar: AppBar(title: Text(titulo)),
